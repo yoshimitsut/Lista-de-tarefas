@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listas de Tarefas</title>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>
+            <%= taskList.title %>
+        </h1>
+
+        <form action="/app/<%= taskList.id %>" method="post" >
+            <div class="input-group">
+                <input type="text" name="title" id="title" class="form-control" placeholder="Adicionar nova tarefa...">
+                <button type="submit"  class="btn">Adicionar</button>
+            </div>
+        </form>
+
+        <ul class="list-group">
+            
+
+        </ul>
+    </div>
+</body>
+</html>

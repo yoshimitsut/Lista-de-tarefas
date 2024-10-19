@@ -6,10 +6,20 @@
     <title>L-Tarefa</title>
 </head>
 <body>
-    <h1>Lista de Tarefas</h1>
+    <div class="container">
+        <h1>Lista de Tarefas</h1>
+        <% taskLists.forEach( taskList => { %>
+            <li class="list-group-item">
+                <a href="/app/<%= taskList.id %>" class="">
+                    <%= taskList.title %>
+                </a>
 
-
-
-    <button>Nova Lista de Tarefa</button>
+                <form action="/app/<%= taskList.id %>/excluir" method="post">
+                    <button type="submit" class="btn-delete">Excluir</button>
+                </form>
+            </li> 
+        <% }); %>
+        <a href="/app/nova-lista" class="btn">Nova Lista de Tarefa</a>
+    </div> 
 </body>
 </html>
