@@ -17,7 +17,7 @@ module.exports = {
         const newList = {
             id: Math.floor(Math.random() * 99999999).toString(),
             title: title,
-            task: []
+            tasks: []
         }
         return newList
     },
@@ -30,6 +30,15 @@ module.exports = {
     deleteList: (listId) => {
         const listIndex = taskLists.findIndex(list => list.id === listId)
         taskLists.splice(listIndex, 1)
+    },
+
+    addTask: (listId, taskTitle) => {
+        const newTask = {
+            id: Math.floor(Math.random()*99999).toString(),
+            title: taskTitle,
+            completed: false
+        }
+        taskLists.find(list => list.id === listId).tasks.push(newTask)
     }
 
 

@@ -34,6 +34,15 @@ module.exports = {
         const {id} = req.params
         taskListModel.deleteList(id)
         res.redirect('/app')
+    },
+
+    addTask: (req, res) => {
+        const {id} = req.params
+        const {title} = req.body
+
+        taskListModel.addTask(id, title)
+
+        res.redirect(`/app/${id}`)
     }
 
 }

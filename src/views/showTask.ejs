@@ -12,16 +12,29 @@
             <%= taskList.title %>
         </h1>
 
-        <form action="/app/<%= taskList.id %>" method="post" >
+        <form action="/app/<%= taskList.id %>/nova-tarefa" method="post" >
             <div class="input-group">
                 <input type="text" name="title" id="title" class="form-control" placeholder="Adicionar nova tarefa...">
-                <button type="submit"  class="btn">Adicionar</button>
+                <button type="submit" class="btn">Adicionar</button>
             </div>
         </form>
 
         <ul class="list-group">
-            
-
+            <% taskList.tasks.forEach(task => { %>
+                <li>
+                    <%= task.title %>
+                    <% if (!task.completed) { %>
+                        <form action="/app/<%= taskList.id %>/completar/<%= task.id %>" method="post">
+                            <button type="submit" class="btn btn-success">Completar</button>
+                        </form>
+                    <% } else { %>
+                        <form action="/app/<%= taskList.id %>/desfazer/<%= task.id %>" method="post">
+                            <button type="submit" class="btn btn-delete">Desfazer</button>
+                        </form>
+                    <% } %>
+                </li>
+            <% }) %>
+            <a href="/app" class="btn">Voltar para todas as listas</a>
         </ul>
     </div>
 </body>
