@@ -39,9 +39,19 @@ module.exports = {
             completed: false
         }
         taskLists.find(list => list.id === listId).tasks.push(newTask)
+    },
+
+    completeTask: (listId, taskId) => {
+        const taskList = taskLists.find(list => list.id === listId)
+        const task = taskList.tasks.find(task => task.id === taskId)
+        task.completed = true
+    },
+
+    undoTask: (listId, taskId) => {
+        const taskList = taskLists.find(list => list.id === listId)
+        const task = taskList.tasks.find(task => task.id === taskId)
+        task.completed = false
     }
-
-
     
 
 
